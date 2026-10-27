@@ -16,26 +16,26 @@ Every file must be saved as `SKILL.md` in a folder named after the skill. For ex
 
 ## Skills
 
-| # | Skill | Phase | Former Spanish name |
-|---|---|---|---|
-| — | `qa-full-website` | Orchestrator: runs every phase in order, merges the severities and gives a launch verdict | qa-web-completa |
-| 1 | `qa-code-optimization` | Code tidiness and optimization | qa-optimizacion-codigo |
-| 2 | `qa-performance-cwv` | Performance and Core Web Vitals | qa-rendimiento-cwv |
-| 3 | `qa-technical-seo` | Technical SEO | qa-seo-tecnico |
-| 4 | `qa-geo` | Visibility in AI search (GEO) | qa-geo |
-| 5 | `qa-accessibility` | Accessibility (WCAG 2.2 AA) | qa-accesibilidad |
-| 6 | `qa-design-tokens` | Design tokens | auditoria-design-tokens |
-| 7 | `qa-figma-fidelity` | Fidelity to the Figma design | qa-fidelidad-figma |
-| 8 | `qa-responsive-browsers` | Responsive layout and cross-browser | qa-responsive-navegadores |
-| 9 | `qa-functionality` | Functional testing | qa-funcionalidad |
-| 10 | `qa-security` | Security (configuration and code) | qa-seguridad |
-| 11 | `qa-legal-spain` | Legal compliance (Spain/EU) | auditoria-legal-web-es |
-| 12 | `qa-content` | Content and copy | qa-contenido |
-| 13 | `qa-analytics` | Analytics and measurement | qa-analitica |
-| 14 | `qa-deployment` | Deployment and infrastructure | qa-despliegue |
-| 15 | `qa-maintainability` | Maintainability (score from 0 to 100) | qa-mantenibilidad |
-| 16 | `qa-ai-generated-code` | Patterns typical of AI-generated code | qa-codigo-ia |
-| 17 | `qa-ecodesign` | Ecodesign and carbon footprint | qa-ecodiseno |
+| # | Skill | Phase |
+|---|---|---|
+| — | `qa-full-website` | Orchestrator: runs every phase in order, merges the severities and gives a launch verdict |
+| 1 | `qa-code-optimization` | Code tidiness and optimization |
+| 2 | `qa-performance-cwv` | Performance and Core Web Vitals |
+| 3 | `qa-technical-seo` | Technical SEO |
+| 4 | `qa-geo` | Visibility in AI search (GEO) |
+| 5 | `qa-accessibility` | Accessibility (WCAG 2.2 AA) |
+| 6 | `qa-design-tokens` | Design tokens |
+| 7 | `qa-figma-fidelity` | Fidelity to the Figma design |
+| 8 | `qa-responsive-browsers` | Responsive layout and cross-browser |
+| 9 | `qa-functionality` | Functional testing |
+| 10 | `qa-security` | Security (configuration and code) |
+| 11 | `qa-legal-spain` | Legal compliance (Spain/EU) |
+| 12 | `qa-content` | Content and copy |
+| 13 | `qa-analytics` | Analytics and measurement |
+| 14 | `qa-deployment` | Deployment and infrastructure |
+| 15 | `qa-maintainability` | Maintainability (score from 0 to 100) |
+| 16 | `qa-ai-generated-code` | Patterns typical of AI-generated code |
+| 17 | `qa-ecodesign` | Ecodesign and carbon footprint |
 
 ## How the translation was checked
 
