@@ -1,4 +1,4 @@
-# QA skills for Next.js websites (English version)
+# QA skills for Next.js websites
 
 These are 18 Claude skills for running QA on Next.js websites generated from Figma with AI. Each `.md` file is a complete `SKILL.md`: the instructions and the scripts it runs are inside the file.
 
@@ -36,16 +36,3 @@ Every file must be saved as `SKILL.md` in a folder named after the skill. For ex
 | 15 | `qa-maintainability` | Maintainability (score from 0 to 100) |
 | 16 | `qa-ai-generated-code` | Patterns typical of AI-generated code |
 | 17 | `qa-ecodesign` | Ecodesign and carbon footprint |
-
-## How the translation was checked
-
-I extracted each skill's scripts from the English file and ran them next to the Spanish originals against a test Next.js 16 app with planted bugs. In every case they gave the same findings; only the language differed.
-
-These parts could not be tested here and should be checked on the first real project:
-
-- WebKit and Firefox, and real iPhone and Android devices.
-- VoiceOver and NVDA screen readers.
-- CrUX and Search Console data, GA4 with real traffic, and Vercel deployments over HTTPS.
-- LanguageTool, a real cookie-consent platform, GitHub Actions, and the Figma MCP steps.
-
-The minimum safe versions table in `qa-security` was checked on 26 October 2026. Recheck it on every run; the skill says how.
