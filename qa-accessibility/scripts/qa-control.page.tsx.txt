@@ -1,0 +1,45 @@
+// Control page ONLY in the test copy (/home/claude/work/a11y). It does not exist in the original fixture.
+// Seeds issues the fixture lacks: sticky header that covers focus, focusable off-canvas menu,
+// removed outline, small targets, infinite animation without motion-safe, h-screen, 14 px input,
+// long unbroken string, next/link (client navigation) and CSS features with limited support.
+// The visible texts stay in Spanish on purpose: the page imitates the audited Spanish site.
+import Link from "next/link";
+
+export const metadata = { title: "Control QA" };
+
+export default function QaControl() {
+  return (
+    <div>
+      <header className="sticky top-0 z-50 h-24 bg-white shadow">
+        <nav aria-label="Principal" className="flex gap-1 p-2">
+          <a href="#a" className="text-xs">A</a>
+          <a href="#b" className="text-xs">B</a>
+          <button className="size-4 bg-black outline-none focus:outline-none" aria-label="Buscar"></button>
+        </nav>
+        <div className="fixed right-0 top-0 h-full w-64 translate-x-full bg-white">
+          <a href="/servicios">Servicios (menú móvil oculto)</a>
+          <a href="/contacto">Contacto (menú móvil oculto)</a>
+        </div>
+      </header>
+      <main>
+        <section className="h-screen bg-zinc-100 p-4">
+          <h1 className="animate-bounce">Control</h1>
+          <p className="truncate w-40">Texto que se trunca con puntos suspensivos en lugar de ajustarse al ancho</p>
+          <p>Supercalifragilisticoespialidosoextraordinariamentelarguísimapalabrasinguiones</p>
+        </section>
+        <section className="p-4 space-y-[400px]">
+          <p><a href="#x">Enlace 1 tras el hero</a></p>
+          <p><a href="#y">Enlace 2 tras el hero</a></p>
+          <form className="flex flex-col gap-2">
+            <label htmlFor="q">Buscar</label>
+            <input id="q" className="text-sm border" />
+            <textarea aria-label="Mensaje" className="field-sizing-content border" />
+          </form>
+          <Link href="/contacto">Ir a contacto (next/link)</Link>
+          <div className="group border p-2"><span>Tarjeta</span> <a href="#z" className="opacity-0 group-hover:opacity-100">Ver detalle (solo hover)</a></div>
+          <details className="[interpolate-size:allow-keywords]"><summary>Más</summary>Contenido</details>
+        </section>
+      </main>
+    </div>
+  );
+}
