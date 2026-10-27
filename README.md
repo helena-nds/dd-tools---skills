@@ -1,6 +1,6 @@
 # QA skills for Next.js websites (English version)
 
-These are 18 Claude skills for running QA on Next.js websites generated from Figma with AI. They are translated from the Spanish originals. Each `.md` file is a complete `SKILL.md`: the instructions and the scripts it runs are inside the file.
+These are 18 Claude skills for running QA on Next.js websites generated from Figma with AI. Each `.md` file is a complete `SKILL.md`: the instructions and the scripts it runs are inside the file.
 
 The skills still audit **Spanish-language websites in Spain**. Some text deliberately stays in Spanish:
 
