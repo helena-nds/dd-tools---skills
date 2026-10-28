@@ -483,7 +483,7 @@ Look for packages flagged `heavy` and large own modules in `ownModulesInClient`.
 
 **Deliver the report as a Markdown file, never as chat text.** Write the complete report to a `.md` file the user can open (in Cowork, save it in the outputs folder and share it as a file; in Claude Code, save it where the user asks or, by default, next to the other outputs of this skill) and in the chat reply only with the verdict, the count of findings by severity and the file path. Do not paste the report into the chat.
 
-Save it as `performance-cwv.md` (and the scripts' JSON in `performance-cwv/`). Write the report in the user's language.
+Save it as `performance-cwv.md` (and the scripts' JSON in `performance-cwv/`).
 
 ```markdown
 # Performance and Core Web Vitals — <project> — <date> — commit <hash>

@@ -3,7 +3,7 @@
 // stock-library images and contact details that are inconsistent across pages.
 // Usage: node extract-content.mjs <baseUrl> <route> [<route>...] [--out=content] [--ignore-words=Nacar,Figma]
 //   Writes <out>/<route>.txt (text per page, for the spell checker) and <out>/content.json (data + findings).
-// The regexes and word lists match Spanish (and English) text on the audited site: do not translate them.
+// The regexes and word lists match Spanish (and English) text on the audited site.
 import { chromium } from 'playwright';
 import { mkdirSync, writeFileSync } from 'node:fs';
 

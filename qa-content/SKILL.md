@@ -7,7 +7,7 @@ description: Reviews the content of a Spanish-language Next.js website before it
 
 The goal is to answer one question with evidence: **is everything the visitor reads final, correct and consistent?** On websites generated from Figma with AI it is very common for filler text from the design to slip through ("Lorem ipsum", "Your text here"), leftovers from the Next template ("To get started, edit the page.tsx file"), English copy from the generator, Titles With Every Word Capitalized, one phone number in the footer and a different one on the contact page, and a © from two years ago. A single lorem ipsum in production costs more credibility than any technical bug.
 
-The audited websites are in Spanish (Spain): the checks below apply Spanish spelling, typography and capitalization rules, and the regexes and word lists in the scripts match Spanish text on purpose.
+The audited websites are in Spanish (Spain): the checks below apply Spanish spelling, typography and capitalization rules, and the regexes and word lists in the scripts match Spanish text.
 
 **By default no code or text is modified.** Deliver the report and fix only if the user asks; new texts are approved by the client. The tools go in `/tmp/qa-content/`, never in the project.
 
@@ -67,7 +67,7 @@ node extract-content.mjs http://localhost:3000 / /servicios /contacto /aviso-leg
 // stock-library images and contact details that are inconsistent across pages.
 // Usage: node extract-content.mjs <baseUrl> <route> [<route>...] [--out=content] [--ignore-words=Nacar,Figma]
 //   Writes <out>/<route>.txt (text per page, for the spell checker) and <out>/content.json (data + findings).
-// The regexes and word lists match Spanish (and English) text on the audited site: do not translate them.
+// The regexes and word lists match Spanish (and English) text on the audited site.
 import { chromium } from 'playwright';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
@@ -304,7 +304,7 @@ No proof of license is **High**: it does not block anything technically, but it 
 
 **Deliver the report as a Markdown file, never as chat text.** Write the complete report to a `.md` file the user can open (in Cowork, save it in the outputs folder and share it as a file; in Claude Code, save it where the user asks or, by default, next to the other outputs of this skill) and in the chat reply only with the verdict, the count of findings by severity and the file path. Do not paste the report into the chat.
 
-Save it as `qa-content.md` (plus `out/content.json` and `spelling.json`). Write the report in the user's language.
+Save it as `qa-content.md` (plus `out/content.json` and `spelling.json`).
 
 ```markdown
 # Content QA — <project> — <date> — <URL> — commit <hash>

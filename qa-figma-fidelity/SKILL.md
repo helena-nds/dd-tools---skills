@@ -346,7 +346,7 @@ Separate **objective mismatches** (measured) from **subjective observations** (v
 
 **Deliver the report as a Markdown file, never as chat text.** Write the complete report to a `.md` file the user can open (in Cowork, save it in the outputs folder and share it as a file; in Claude Code, save it where the user asks or, by default, next to the other outputs of this skill) and in the chat reply only with the verdict, the count of findings by severity and the file path. Do not paste the report into the chat.
 
-`.design-qa/report.md` (plus `report.json`). Write the report in the user's language.
+`.design-qa/report.md` (plus `report.json`).
 
 ```markdown
 # Design QA — / (Home) — Figma 12:345 — 1440×900 @1x — commit 3f2a1c — 2026-10-26

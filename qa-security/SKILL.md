@@ -603,7 +603,7 @@ Before applying a strict CSP, deploy it as `Content-Security-Policy-Report-Only`
 
 **Deliver the report as a Markdown file, never as chat text.** Write the complete report to a `.md` file the user can open (in Cowork, save it in the outputs folder and share it as a file; in Claude Code, save it where the user asks or, by default, next to the other outputs of this skill) and in the chat reply only with the verdict, the count of findings by severity and the file path. Do not paste the report into the chat.
 
-Save `qa-security.md` and `qa-security.json` (the scripts' JSON). Write the report in the user's language. Template:
+Save `qa-security.md` and `qa-security.json` (the scripts' JSON). Template:
 
 ```markdown
 # Security — <project> — <date> — commit <hash> — Next <version> (advisory table verified on <date>)

@@ -1,18 +1,12 @@
 # QA skills for Next.js websites
 
-These are 18 Claude skills for running QA on Next.js websites generated from Figma with AI. Each `.md` file is a complete `SKILL.md`: the instructions and the scripts it runs are inside the file.
+These are 18 Claude skills for running QA on Next.js websites generated from Figma with AI. Each `SKILL.md` is complete: the instructions and the scripts it runs are inside the file. Every skill delivers its report as a Markdown file, not as chat text.
 
-The skills still audit **Spanish-language websites in Spain**. Some text deliberately stays in Spanish:
-
-- Spanish legal terms, which get an English gloss the first time they appear.
-- Patterns that detect Spanish text on the site.
-- Code snippets meant for Spanish visitors.
-
-Each skill asks for the report to be written in the user's language.
+The skills are built for websites in Spain, so the legal phase cites Spanish law and the content phase checks Spanish copy.
 
 ## How to install
 
-Every file must be saved as `SKILL.md` in a folder named after the skill. For example, `qa-security.md` becomes `~/.claude/skills/qa-security/SKILL.md` for Claude Code (or upload it as a skill in Claude). Install them all if you want to use `qa-full-website`, because it calls the other 17.
+Each skill lives in a folder named after it, with its `SKILL.md` inside (for example `qa-security/SKILL.md`). For Claude Code, copy the folder to `~/.claude/skills/`. For Claude, zip the skill's folder and upload it in Settings → Capabilities → Skills. Install them all if you want to use `qa-full-website`, because it calls the other 17.
 
 ## Skills
 
@@ -36,3 +30,14 @@ Every file must be saved as `SKILL.md` in a folder named after the skill. For ex
 | 15 | `qa-maintainability` | Maintainability (score from 0 to 100) |
 | 16 | `qa-ai-generated-code` | Patterns typical of AI-generated code |
 | 17 | `qa-ecodesign` | Ecodesign and carbon footprint |
+
+## Not yet tested
+
+The scripts were run against a test Next.js 16 app with planted bugs. These parts could not be tested there and should be checked on the first real project:
+
+- WebKit and Firefox, and real iPhone and Android devices.
+- VoiceOver and NVDA screen readers.
+- CrUX and Search Console data, GA4 with real traffic, and Vercel deployments over HTTPS.
+- LanguageTool, a real cookie-consent platform, GitHub Actions, and the Figma MCP steps.
+
+The minimum safe versions table in `qa-security` was checked on 26 October 2026. Recheck it on every run; the skill says how.

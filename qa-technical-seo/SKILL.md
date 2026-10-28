@@ -605,8 +605,6 @@ console.log(JSON.stringify(out, null, 1));
 
 **Deliver the report as a Markdown file, never as chat text.** Write the complete report to a `.md` file the user can open (in Cowork, save it in the outputs folder and share it as a file; in Claude Code, save it where the user asks or, by default, next to the other outputs of this skill) and in the chat reply only with the verdict, the count of findings by severity and the file path. Do not paste the report into the chat.
 
-Write the report in the user's language.
-
 Save `technical-seo.md` (and `technical-seo.json` with the union of `summary.json`, `robots-sitemap.json`, `routes.json` and `render.json`):
 
 ```markdown

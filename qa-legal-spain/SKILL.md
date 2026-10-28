@@ -304,7 +304,7 @@ Penalties: a significant failure regarding letters a) (identification and contac
 
 **Deliver the report as a Markdown file, never as chat text.** Write the complete report to a `.md` file the user can open (in Cowork, save it in the outputs folder and share it as a file; in Claude Code, save it where the user asks or, by default, next to the other outputs of this skill) and in the chat reply only with the verdict, the count of findings by severity and the file path. Do not paste the report into the chat.
 
-`qa-legal-spain.md`. Write the report in the user's language.
+`qa-legal-spain.md`.
 
 ```markdown
 # Website legal audit — <domain> — <date> — commit <hash>
@@ -324,7 +324,7 @@ Non-compliance: N · High risk: N · Improvements: N · Not assessable: N
 
 Each finding carries **evidence** (file:line, or request/cookie and phase), **the rule with its article**, risk and **fix** (with a Next.js code snippet where relevant).
 
-Always close with this notice (in the report's language): *"This report is an automated technical review and does not constitute legal advice. Regulations and the authorities' criteria change (Digital Omnibus in progress, appeal C-703/25 P on the DPF, reform of the age of consent in Spain). Consult a legal professional before making decisions."* In Spanish: *"Este informe es una revisión técnica automatizada y no constituye asesoramiento jurídico. La normativa y los criterios de las autoridades cambian (Digital Omnibus en tramitación, recurso C-703/25 P sobre el DPF, reforma de la edad de consentimiento en España). Consulte con un profesional del derecho antes de tomar decisiones."*
+Always close with this notice: *"This report is an automated technical review and does not constitute legal advice. Regulations and the authorities' criteria change (Digital Omnibus in progress, appeal C-703/25 P on the DPF, reform of the age of consent in Spain). Consult a legal professional before making decisions."*
 
 ## Reference sources
 

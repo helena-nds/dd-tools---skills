@@ -300,8 +300,6 @@ This is reviewed by asking and reading configuration; the scripts can't see it:
 
 **Deliver the report as a Markdown file, never as chat text.** Write the complete report to a `.md` file the user can open (in Cowork, save it in the outputs folder and share it as a file; in Claude Code, save it where the user asks or, by default, next to the other outputs of this skill) and in the chat reply only with the verdict, the count of findings by severity and the file path. Do not paste the report into the chat.
 
-Write the report in the user's language.
-
 Save `qa-deployment.md` and `qa-deployment.json` (the scripts' JSON):
 
 ```markdown

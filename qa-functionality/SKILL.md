@@ -625,7 +625,7 @@ console.log(`Wrote ${outFile}: ${routes.length} routes, ${forms.length} forms`);
 
 **Deliver the report as a Markdown file, never as chat text.** Write the complete report to a `.md` file the user can open (in Cowork, save it in the outputs folder and share it as a file; in Claude Code, save it where the user asks or, by default, next to the other outputs of this skill) and in the chat reply only with the verdict, the count of findings by severity and the file path. Do not paste the report into the chat.
 
-Save it as `qa-functionality.md` (plus `links.json`, `smoke.json`, `nav-*.json` and `forms.json`). Write the report in the user's language.
+Save it as `qa-functionality.md` (plus `links.json`, `smoke.json`, `nav-*.json` and `forms.json`).
 
 ```markdown
 # Functional QA — <project> — <date> — <tested URL> — commit <hash>
@@ -663,7 +663,7 @@ Order: 1) forms and email delivery; 2) broken links, clickable `div`s and menu; 
 
 Snippets for Next 16 (in 15, `retry` becomes `reset`):
 
-`app/not-found.tsx`: a Server Component with `<h1>Página no encontrada</h1>`, a helpful sentence and `<Link href="/">Volver al inicio</Link>`; it inherits header and footer from the layout. (The visible text stays in Spanish: it is shown to the site's visitors.)
+`app/not-found.tsx`: a Server Component with `<h1>Página no encontrada</h1>`, a helpful sentence and `<Link href="/">Volver al inicio</Link>`; it inherits header and footer from the layout.
 
 ```tsx
 // app/error.tsx (visitor-facing text in Spanish)
