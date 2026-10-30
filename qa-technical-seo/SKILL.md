@@ -9,7 +9,7 @@ The goal is to answer one question with evidence: **can Google and Bing crawl, u
 
 **By default, no code is modified.** Deliver the report and fix things only if the user asks. Don't install dependencies in the project either: the tools go in `/tmp/qa-technical-seo/`.
 
-Out of scope (they have their own skill): speed and Core Web Vitals (`qa-performance-cwv`), text quality (`qa-content`), AI crawlers, detailed JSON-LD and llms.txt (`qa-geo`), cookies (`qa-legal-spain`).
+Out of scope (they have their own skill): speed and Core Web Vitals (`qa-performance-cwv`), text quality (`qa-content`), AI crawlers, detailed JSON-LD and llms.txt (`qa-geo`), cookies (`qa-legal`).
 
 ## Step 0. Context
 

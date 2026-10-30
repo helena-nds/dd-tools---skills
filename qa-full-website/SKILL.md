@@ -23,7 +23,7 @@ The goal is to answer one question: **can this website be launched, and what has
 | 8 | Responsive and browsers | `qa-responsive-browsers` | Yes | — |
 | 9 | Functionality | `qa-functionality` | Yes | Test environment for forms |
 | 10 | Security | `qa-security` | Yes | — |
-| 11 | Legal (Spain/EU) | `qa-legal-spain` | Yes | Company data (headcount, B2C…) |
+| 11 | Legal (worldwide) | `qa-legal` | Yes | Company data (country, target markets, headcount, B2C…) |
 | 12 | Content | `qa-content` | Yes | — |
 | 13 | Analytics | `qa-analytics` | Yes | Analytics tool in use |
 | 14 | Deployment | `qa-deployment` | Build + deployed URL | Staging/production URL |
@@ -40,7 +40,7 @@ Ask everything at once, so you don't interrupt at every phase:
 1. **Which phases**: all (default) or a subset. A full QA is long and uses a lot of resources: if the user is in a hurry, suggest starting with the ones that block launch (security, legal, functionality, accessibility, technical SEO, deployment).
 2. **Figma URL** (phases 6 and 7) and whether there is a seat with access to the Figma MCP server.
 3. **Staging or production URL** (phases 2, 4 and 14). If there is only a local build, those phases run locally and the limitation is noted.
-4. **Company data** for the legal phase: legal form, number of employees, whether it sells online to consumers, regulated profession, autonomous community (comunidad autónoma, Spanish region).
+4. **Company data** for the legal phase: legal entity and country of establishment, target markets (countries where they look for clients, sell or advertise), number of employees and turnover, whether it sells online to consumers, regulated profession.
 5. **Analytics** in use (GA4, Plausible, Vercel Analytics…) and whether there is a test environment to submit forms without reaching production.
 6. **Where to save the reports**. By default in `/tmp/qa-full-website/<date>/`, outside the repo; if the user wants them in the project, suggest a `qa-reports/` folder and adding it to `.gitignore` (with their permission).
 
@@ -91,11 +91,11 @@ The skills use different scales. Convert them all to this one:
 
 | Unified | Equivalents |
 |---|---|
-| **Critical** (blocks launch) | Critical · critical · P0 (Blocker, `qa-figma-fidelity`) · "Legal non-compliance" / "Non-compliance" (`qa-legal-spain`) |
-| **High** (fix before launch if possible) | High · high · P1 · "High risk" (`qa-legal-spain`) |
+| **Critical** (blocks launch) | Critical · critical · P0 (Blocker, `qa-figma-fidelity`) · "Non-compliance" (`qa-legal`) |
+| **High** (fix before launch if possible) | High · high · P1 · "High risk" (`qa-legal`) |
 | **Medium** (plan it) | Medium · medium · P2 |
-| **Low** (polish) | Low · low · info · P3 · "Recommended improvement" (`qa-legal-spain`) |
-| **Not evaluated** | "Not assessable" (`qa-legal-spain`), blocked phases or phases without a skill |
+| **Low** (polish) | Low · low · info · P3 · "Improvement" (`qa-legal`) |
+| **Not evaluated** | "Not assessable" (`qa-legal`), blocked phases or phases without a skill |
 
 **Launch verdict**:
 

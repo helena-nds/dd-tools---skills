@@ -51,7 +51,7 @@ for (const f of files) {
     for (const m of tags(code, 'Script')) {
       const t = m[0], l = lineOf(code, m.index), strat = (t.match(/strategy=["'](\w+)/) || [, 'afterInteractive'])[1];
       if (strat === 'beforeInteractive') emit('script-before-interactive', 'medium', f, l, t, 'only for critical scripts (consent manager, polyfills)');
-      else if (THIRD.test(t) && strat === 'afterInteractive') emit('script-third-party-early', 'medium', f, l, t, 'lazyOnload or @next/third-parties; consent: see qa-analytics / qa-legal-spain');
+      else if (THIRD.test(t) && strat === 'afterInteractive') emit('script-third-party-early', 'medium', f, l, t, 'lazyOnload or @next/third-parties; consent: see qa-analytics / qa-legal');
     }
     for (const m of tags(code, 'iframe')) {
       const t = m[0], l = lineOf(code, m.index);

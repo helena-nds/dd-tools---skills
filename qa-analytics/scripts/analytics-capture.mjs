@@ -125,9 +125,9 @@ function diagnose(r) {
   if (r.error) return [{ sev: 'high', msg: r.error + ' (no banner or different text: confirm with a screenshot)' }];
   const d = [], pre = r.mode === 'no-interaction' ? r.hits : r.hits.filter(h => h.phase === 'initial-load');
   const add = (sev, msg) => d.push({ sev, msg });
-  for (const h of pre.filter(h => COOKIE_PROV.has(h.prov))) { add('critical', `${h.prov}:${h.event} sent without consent (gcs=${h.gcs ?? '—'})${h.gcs === 'G100' ? ': advanced Consent Mode' : ''}. See qa-legal-spain`); break; }
+  for (const h of pre.filter(h => COOKIE_PROV.has(h.prov))) { add('critical', `${h.prov}:${h.event} sent without consent (gcs=${h.gcs ?? '—'})${h.gcs === 'G100' ? ': advanced Consent Mode' : ''}. See qa-legal`); break; }
   if (r.mode === 'reject') for (const h of r.hits.filter(h => h.phase !== 'initial-load' && COOKIE_PROV.has(h.prov) && h.gcs !== 'G100')) { add('critical', `${h.prov} keeps sending after rejecting (${h.phase})`); break; }
-  if (r.mode === 'reject' && r.hits.some(h => h.phase !== 'initial-load' && h.gcs === 'G100')) add('high', 'GA4 keeps sending pings after rejecting (gcs=G100, advanced Consent Mode): high risk, see qa-legal-spain');
+  if (r.mode === 'reject' && r.hits.some(h => h.phase !== 'initial-load' && h.gcs === 'G100')) add('high', 'GA4 keeps sending pings after rejecting (gcs=G100, advanced Consent Mode): high risk, see qa-legal');
   if (r.mode === 'reject' || (r.mode === 'no-interaction' && r.banner.accept)) return d;   // measurement quality is assessed with consent
   const failed = Object.entries(r.scripts).filter(([, s]) => s.status !== 200 && s.status !== 304);
   for (const [u, s] of failed) add('high', `analytics script does not load: ${u} (${s.status})${/_vercel\//.test(u) ? ': /_vercel/* only exists when deployed on Vercel (on other hosting it measures nothing)' : ''}`);

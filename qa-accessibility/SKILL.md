@@ -19,7 +19,7 @@ Boundaries with other skills: `qa-design-tokens` reviews the contrast of token p
 2. App Router or Pages Router; `app/layout.tsx` (`lang`, skip link, `metadata`, `viewport`).
 3. URL to audit: preferably `next build && next start` or staging. In `next dev` the overlay (`nextjs-portal`) pollutes axe; the scripts exclude it.
 4. Key routes: home, one of each template, forms, login/checkout if any (3.3.7/3.3.8), and the 404.
-5. Regulations: WCAG 2.2 AA is the current standard (EN 301 549, referenced by the EAA, is being aligned with 2.2). WCAG 3 is still a working draft (W3C published another one in September 2026) and "will not be a standard for a few years": mention it only as context. In Spain the EAA applies through Ley 11/2023 (Spain's EAA transposition law) since 28-06-2025 (e-commerce, banking, transport…): for the legal scope, refer to the `qa-legal-spain` skill.
+5. Regulations: WCAG 2.2 AA is the current standard (EN 301 549, referenced by the EAA, is being aligned with 2.2). WCAG 3 is still a working draft (W3C published another one in September 2026) and "will not be a standard for a few years": mention it only as context. In Spain the EAA applies through Ley 11/2023 (Spain's EAA transposition law) since 28-06-2025 (e-commerce, banking, transport…): for the legal scope, refer to the `qa-legal` skill.
 6. **ripgrep**: the `rg` commands need ripgrep on the PATH (`command -v rg`); macOS does not ship it and Claude Code's bundled one is usually not reachable. If it is missing, install it only with permission (`brew install ripgrep`) or, in a git repo, use `git ls-files -co --exclude-standard` as the file list (e.g. `git ls-files -co --exclude-standard -- '*.tsx' | xargs grep -n "pattern"`).
 
 ## Step 1. Tools

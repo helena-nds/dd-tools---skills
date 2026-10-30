@@ -526,7 +526,7 @@ What it tests and how to read it:
 | D. Simulated success (fetch/JSON) | Confirmation message in `newText` | Nothing changes: the user does not know whether it was sent (High) |
 | E. Server with empty data (staging) | 4xx or an error message | 200 with no message: the server accepts anything (Critical if it actually sends an email) |
 
-Also review `fields`: fields without a `label` (input for `qa-accessibility`), fields without a `name` (they are not submitted), missing `autocomplete` on name, email and phone, and `checkedByDefault: true` on consent checkboxes (assessed by `qa-legal-spain`). `honeypot` and `captcha` show whether there is antispam.
+Also review `fields`: fields without a `label` (input for `qa-accessibility`), fields without a `name` (they are not submitted), missing `autocomplete` on name, email and phone, and `checkedByDefault: true` on consent checkboxes (assessed by `qa-legal`). `honeypot` and `captcha` show whether there is antispam.
 
 With server actions a success cannot be simulated: the response is in RSC format. To check it, use `--mode=staging`. The browser's native messages come out in Chromium's language; they are not a content finding.
 
@@ -534,7 +534,7 @@ With server actions a success cannot be simulated: the response is in RSC format
 
 1. **Actual email delivery** (Critical): the message reaches the right inbox, with a sender on the company's own domain, the user's `Reply-To`, does not land in spam, and the user gets a confirmation if one is planned. Use `qa+date@client-domain` addresses and warn the client beforehand.
 2. **Provider errors**: with the API key empty or wrong on staging, the user must see an error and the failure must be logged; the error must not be swallowed with `.catch(() => null)`.
-3. **Antispam**: honeypot or Turnstile/hCaptcha, validated **on the server** (reCAPTCHA without consent carries legal risk: see `qa-legal-spain`). Rate limiting by IP (middleware/proxy, Upstash, host rules): 10 consecutive submissions from the same IP must end in 429.
+3. **Antispam**: honeypot or Turnstile/hCaptcha, validated **on the server** (reCAPTCHA without consent carries legal risk: see `qa-legal`). Rate limiting by IP (middleware/proxy, Upstash, host rules): 10 consecutive submissions from the same IP must end in 429.
 4. **Never** in production: no load tests, no submission loops, no fake data reaching the client's CRM.
 
 ## Step 7. Contact, maps and downloads on mobile

@@ -7,7 +7,7 @@ description: Reviews the deployment of a Next.js website - environment variables
 
 The question is: **is what's published what should be, on the right domain, indexable only where it should be, and with a way back if something fails?** In websites generated from Figma with AI, the code usually arrives "working locally" and deployment is done by hand: staging indexed by Google with test content, production with a forgotten `noindex`, `www` and non-`www` serving the same site, legal pages rendered on every visit for no reason, no custom 404 and nobody watching whether the site goes down.
 
-**By default, nothing is modified** (no code, no DNS, no hosting configuration): deliver the report and fix things only if the user asks. The tools go in `/tmp/qa-deployment/`. Out of scope: speed and Core Web Vitals (`qa-performance-cwv`), security headers, secrets and CVEs (`qa-security`), cookies (`qa-legal-spain`), CI and tests (`qa-maintainability`).
+**By default, nothing is modified** (no code, no DNS, no hosting configuration): deliver the report and fix things only if the user asks. The tools go in `/tmp/qa-deployment/`. Out of scope: speed and Core Web Vitals (`qa-performance-cwv`), security headers, secrets and CVEs (`qa-security`), cookies (`qa-legal`), CI and tests (`qa-maintainability`).
 
 ## Step 0. Context
 

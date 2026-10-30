@@ -7,7 +7,7 @@ description: Security review of the configuration and code of a Next.js/React we
 
 The audit answers one question: **can this website be published without exposing data, secrets or servers?** Websites generated from Figma by an AI agent always fail in the same places: keys pasted into the code or into `NEXT_PUBLIC_` variables (which end up in the public JavaScript), Route Handlers that return more than they should, unvalidated Server Actions, zero security headers and Next versions with critical advisories. On top of that, Next.js has published security patches almost every month since 2025, so the installed version goes stale quickly.
 
-**Scope**: static review and normal GET requests. **No exploits, fuzzing or attacks**, even if the user asks for them: if a pentest is needed, recommend a specialized team. Cookies and RGPD/GDPR belong to `qa-legal-spain`; HTTPS, domains and staging `noindex` to `qa-deployment`; CI to `qa-maintainability`.
+**Scope**: static review and normal GET requests. **No exploits, fuzzing or attacks**, even if the user asks for them: if a pentest is needed, recommend a specialized team. Cookies and RGPD/GDPR belong to `qa-legal`; HTTPS, domains and staging `noindex` to `qa-deployment`; CI to `qa-maintainability`.
 
 **By default no code is modified** and no dependencies are installed in the project: deliver the report and fix only if the user asks. If you find a real secret, **do not copy it in full into the report** (the scripts redact it) and recommend rotating it.
 

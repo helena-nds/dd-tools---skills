@@ -9,14 +9,14 @@ The goal is to answer with measurements: **how much data does each page move, wh
 
 **By default no code is modified**: the report is delivered and fixes are made only if the user asks. Tools are installed in `/tmp/qa-ecodesign/`, never in the project.
 
-Boundaries: Core Web Vitals, per-route bundle and `/public` weights belong to `qa-performance-cwv` (its `assets-bundle.mjs` script finds leftover assets); the choice of analytics and its consent, to `qa-analytics` and `qa-legal-spain`; behaviour on other devices, to `qa-responsive-browsers`. Here we measure the **cost in data and emissions**.
+Boundaries: Core Web Vitals, per-route bundle and `/public` weights belong to `qa-performance-cwv` (its `assets-bundle.mjs` script finds leftover assets); the choice of analytics and its consent, to `qa-analytics` and `qa-legal`; behaviour on other devices, to `qa-responsive-browsers`. Here we measure the **cost in data and emissions**.
 
 ## Step 0. Context
 
 1. **URL to measure**: production or staging. Local can be measured, but without CDN or Brotli, and without being able to check the hosting.
 2. **Hosting and domain** (Vercel, Netlify, own server…) and **where the audience is** (Spain by default): this changes the carbon intensity of the electricity grid used in the local estimate.
 3. **Representative routes**: home, a content page with images, one with video or embeds if there is one, and contact.
-4. **Cookie banner**: if there is one, measure before accepting (what loads without consent) and, if the user asks, after. The legality of what loads belongs to `qa-legal-spain`.
+4. **Cookie banner**: if there is one, measure before accepting (what loads without consent) and, if the user asks, after. The legality of what loads belongs to `qa-legal`.
 
 ## Step 1. Tools
 

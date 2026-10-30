@@ -11,7 +11,7 @@ The audited websites are in Spanish (Spain): the checks below apply Spanish spel
 
 **By default no code or text is modified.** Deliver the report and fix only if the user asks; new texts are approved by the client. The tools go in `/tmp/qa-content/`, never in the project.
 
-Out of scope: titles and meta descriptions (`qa-technical-seo`), alt text from the accessibility point of view (`qa-accessibility`), legal texts (`qa-legal-spain`). Here alt is reviewed as content: it should say something meaningful and be in Spanish.
+Out of scope: titles and meta descriptions (`qa-technical-seo`), alt text from the accessibility point of view (`qa-accessibility`), legal texts (`qa-legal`). Here alt is reviewed as content: it should say something meaningful and be in Spanish.
 
 ## Step 0. Context
 

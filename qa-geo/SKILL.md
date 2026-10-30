@@ -9,7 +9,7 @@ The goal is to answer one question with evidence: **can AI search engines and as
 
 **By default no code is modified.** Deliver the report and fix only if the user asks. The tools go in `/tmp/qa-geo/`, never in the project.
 
-Out of scope: general technical SEO (`qa-technical-seo`: metadata, sitemap, canonical, links), text quality (`qa-content`), speed (`qa-performance-cwv`) and cookies (`qa-legal-spain`).
+Out of scope: general technical SEO (`qa-technical-seo`: metadata, sitemap, canonical, links), text quality (`qa-content`), speed (`qa-performance-cwv`) and cookies (`qa-legal`).
 
 ## What is official and what isn't (as of October 2026)
 

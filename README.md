@@ -2,11 +2,11 @@
 
 These are 18 Claude skills for running QA on Next.js websites generated from Figma with AI. Each `SKILL.md` is complete: the instructions and the scripts it runs are inside the file. Every skill delivers its report as a Markdown file, not as chat text.
 
-The skills are built for websites in Spain, so the legal phase cites Spanish law and the content phase checks Spanish copy.
+The legal phase (`qa-legal`) covers every country the site targets: it works out the regimes in scope and loads the matching reference file (EU/UK, US, Canada and Latin America, Switzerland/Asia-Pacific/Middle East/Africa). The content phase checks Spanish copy.
 
 ## How to install
 
-Each skill lives in a folder named after it, with its `SKILL.md` inside (for example `qa-security/SKILL.md`). For Claude Code, copy the folder to `~/.claude/skills/`. For Claude, zip the skill's folder and upload it in Settings → Capabilities → Skills. Install them all if you want to use `qa-full-website`, because it calls the other 17.
+Each skill lives in a folder named after it, with its `SKILL.md` inside (for example `qa-security/SKILL.md`). Keep the whole folder: `qa-legal` also needs its `scripts/` and `references/` subfolders. For Claude Code, copy the folder to `~/.claude/skills/`. For Claude, zip the skill's folder and upload it in Settings → Capabilities → Skills. Install them all if you want to use `qa-full-website`, because it calls the other 17.
 
 ## Skills
 
@@ -23,7 +23,7 @@ Each skill lives in a folder named after it, with its `SKILL.md` inside (for exa
 | 8 | `qa-responsive-browsers` | Responsive layout and cross-browser |
 | 9 | `qa-functionality` | Functional testing |
 | 10 | `qa-security` | Security (configuration and code) |
-| 11 | `qa-legal-spain` | Legal compliance (Spain/EU) |
+| 11 | `qa-legal` | Legal compliance for every country the site targets |
 | 12 | `qa-content` | Content and copy |
 | 13 | `qa-analytics` | Analytics and measurement |
 | 14 | `qa-deployment` | Deployment and infrastructure |

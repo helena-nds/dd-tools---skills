@@ -55,7 +55,7 @@ for (const file of files) {
     if (/usePathname|useSearchParams/.test(src) && /gtag(?:\?\.)?\(\s*['"](event['"]\s*,\s*['"]page_view|config)|sendGAEvent\([^)]*page_view|plausible\(\s*['"]pageview/.test(src))
       out.manualPageView.push({ where: file, warning: 'manual page_view on route change: if enhanced measurement (browser history) is on, it is duplicated' });
     if (/(googletagmanager|GoogleAnalytics|GoogleTagManager|plausible|umami|matomo|fathom|fbq\()/.test(src) && !/^(app\/)?api\//.test(file)) {
-      if (!CONSENT.test(src) && /googletagmanager|GoogleAnalytics|GoogleTagManager|fbq\(|matomo/.test(src)) out.warnings.push({ where: file, warning: 'analytics with cookies and no trace of consent in the file: check in the browser (and see qa-legal-spain)' });
+      if (!CONSENT.test(src) && /googletagmanager|GoogleAnalytics|GoogleTagManager|fbq\(|matomo/.test(src)) out.warnings.push({ where: file, warning: 'analytics with cookies and no trace of consent in the file: check in the browser (and see qa-legal)' });
       if (!ENVGATE.test(src) && /googletagmanager|<GoogleAnalytics|<GoogleTagManager|\binit\(\s*\{[^}]*domain|data-website-id|matomo\.js|usefathom\.com\/script|fbq\(\s*['"]init/.test(src)) out.warnings.push({ where: file, warning: 'analytics does not distinguish environment (VERCEL_ENV/NODE_ENV/hostname): previews and staging pollute the data' });
     }
   }

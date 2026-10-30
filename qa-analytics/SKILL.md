@@ -7,7 +7,7 @@ description: Checks that the analytics of a Next.js website measures correctly a
 
 The goal is to answer with evidence: **is the data the client is going to look at correct and complete?** In websites generated with AI from Figma, the usual picture is a GA `<Script>` pasted into the layout with a sample ID, no conversion events, duplicated or missing page_views when navigating with `next/link`, and the same analytics also measuring staging. Broken measurement doesn't throw an error: it simply leaves months of useless data.
 
-**Scope.** This skill checks that measurement **works**. Whether it is **legal** (banner, cookies before consent, advanced Consent Mode, exemption for cookieless analytics) is decided by `qa-legal-spain`: here it is only flagged and referred there.
+**Scope.** This skill checks that measurement **works**. Whether it is **legal** (banner, cookies before consent, advanced Consent Mode, exemption for cookieless analytics) is decided by `qa-legal`: here it is only flagged and referred there.
 
 **By default no code is modified**: deliver the report and fix only if the user asks. Don't install anything in the project; the tools go in `/tmp/qa-analytics/`.
 
@@ -116,7 +116,7 @@ for (const file of files) {
     if (/usePathname|useSearchParams/.test(src) && /gtag(?:\?\.)?\(\s*['"](event['"]\s*,\s*['"]page_view|config)|sendGAEvent\([^)]*page_view|plausible\(\s*['"]pageview/.test(src))
       out.manualPageView.push({ where: file, warning: 'manual page_view on route change: if enhanced measurement (browser history) is on, it is duplicated' });
     if (/(googletagmanager|GoogleAnalytics|GoogleTagManager|plausible|umami|matomo|fathom|fbq\()/.test(src) && !/^(app\/)?api\//.test(file)) {
-      if (!CONSENT.test(src) && /googletagmanager|GoogleAnalytics|GoogleTagManager|fbq\(|matomo/.test(src)) out.warnings.push({ where: file, warning: 'analytics with cookies and no trace of consent in the file: check in the browser (and see qa-legal-spain)' });
+      if (!CONSENT.test(src) && /googletagmanager|GoogleAnalytics|GoogleTagManager|fbq\(|matomo/.test(src)) out.warnings.push({ where: file, warning: 'analytics with cookies and no trace of consent in the file: check in the browser (and see qa-legal)' });
       if (!ENVGATE.test(src) && /googletagmanager|<GoogleAnalytics|<GoogleTagManager|\binit\(\s*\{[^}]*domain|data-website-id|matomo\.js|usefathom\.com\/script|fbq\(\s*['"]init/.test(src)) out.warnings.push({ where: file, warning: 'analytics does not distinguish environment (VERCEL_ENV/NODE_ENV/hostname): previews and staging pollute the data' });
     }
   }
@@ -140,7 +140,7 @@ Review the output and note:
 - `ids`: a `G-XXXXXXX`, `G-TEST…` or an empty `NEXT_PUBLIC_GA_ID` variable is measurement that goes nowhere. More than one `G-`, or GA4 + GTM with GA inside = double tagging and duplicated data.
 - `warnings` with "loads gtag.js but there is no `gtag('config')`": the script downloads and sends nothing.
 - `loading`: analytics `<Script>`s go with `afterInteractive` (the default) or `lazyOnload`; `beforeInteractive` only delays the page.
-- `consentMode`: if there is a `gtag('consent','default')`, it must come **before** `config`, with the four v2 keys (`ad_storage`, `analytics_storage`, `ad_user_data`, `ad_personalization`). If the default is `granted`, or if tags load before consent with everything `denied` (advanced mode), refer to `qa-legal-spain`.
+- `consentMode`: if there is a `gtag('consent','default')`, it must come **before** `config`, with the four v2 keys (`ad_storage`, `analytics_storage`, `ad_user_data`, `ad_personalization`). If the default is `granted`, or if tags load before consent with everything `denied` (advanced mode), refer to `qa-legal`.
 - `events` against the plan in step 1: whatever is missing is a finding. `interactionsWithoutEventInFile` is a quick hint (a file with `tel:`/`<form>` and no event), not the proof: the proof is step 4.
 - `manualPageView`: a `gtag('event','page_view')` in a `useEffect` with `usePathname` **duplicates** views if enhanced measurement has "page changes based on browser history events" turned on (GA4 already sends page_view on every `pushState`).
 - `warnings` "does not distinguish environment": previews, staging and localhost send data to the real property.
@@ -312,9 +312,9 @@ function diagnose(r) {
   if (r.error) return [{ sev: 'high', msg: r.error + ' (no banner or different text: confirm with a screenshot)' }];
   const d = [], pre = r.mode === 'no-interaction' ? r.hits : r.hits.filter(h => h.phase === 'initial-load');
   const add = (sev, msg) => d.push({ sev, msg });
-  for (const h of pre.filter(h => COOKIE_PROV.has(h.prov))) { add('critical', `${h.prov}:${h.event} sent without consent (gcs=${h.gcs ?? '—'})${h.gcs === 'G100' ? ': advanced Consent Mode' : ''}. See qa-legal-spain`); break; }
+  for (const h of pre.filter(h => COOKIE_PROV.has(h.prov))) { add('critical', `${h.prov}:${h.event} sent without consent (gcs=${h.gcs ?? '—'})${h.gcs === 'G100' ? ': advanced Consent Mode' : ''}. See qa-legal`); break; }
   if (r.mode === 'reject') for (const h of r.hits.filter(h => h.phase !== 'initial-load' && COOKIE_PROV.has(h.prov) && h.gcs !== 'G100')) { add('critical', `${h.prov} keeps sending after rejecting (${h.phase})`); break; }
-  if (r.mode === 'reject' && r.hits.some(h => h.phase !== 'initial-load' && h.gcs === 'G100')) add('high', 'GA4 keeps sending pings after rejecting (gcs=G100, advanced Consent Mode): high risk, see qa-legal-spain');
+  if (r.mode === 'reject' && r.hits.some(h => h.phase !== 'initial-load' && h.gcs === 'G100')) add('high', 'GA4 keeps sending pings after rejecting (gcs=G100, advanced Consent Mode): high risk, see qa-legal');
   if (r.mode === 'reject' || (r.mode === 'no-interaction' && r.banner.accept)) return d;   // measurement quality is assessed with consent
   const failed = Object.entries(r.scripts).filter(([, s]) => s.status !== 200 && s.status !== 304);
   for (const [u, s] of failed) add('high', `analytics script does not load: ${u} (${s.status})${/_vercel\//.test(u) ? ': /_vercel/* only exists when deployed on Vercel (on other hosting it measures nothing)' : ''}`);
@@ -346,7 +346,7 @@ console.log(JSON.stringify(out, null, 1));
 - `scroll`: `ga4:scroll` (enhanced measurement at 90 %) or `plausible:engagement`.
 - `byEvent` and `hits[].tid`: a sample ID or two IDs = data in the bin or duplicated. `hits[].debug` = DebugView active in production.
 - `scripts`: an analytics script with a status other than 200 (blocked, 404, `/_vercel/*` outside Vercel) = not measuring.
-- `no-interaction` and `reject` modes: GA4/Matomo/pixel hits before consent or after rejecting, or `gcs=G100` (advanced Consent Mode), come out as critical **and are referred** to `qa-legal-spain`. Cookieless tools may keep measuring after rejecting: whether that is allowed is decided by the legal skill.
+- `no-interaction` and `reject` modes: GA4/Matomo/pixel hits before consent or after rejecting, or `gcs=G100` (advanced Consent Mode), come out as critical **and are referred** to `qa-legal`. Cookieless tools may keep measuring after rejecting: whether that is allowed is decided by the legal skill.
 - `gcs` is Google's consent state: `G1` + ad_storage + analytics_storage (`G111` everything granted, `G101` analytics only, `G100` nothing).
 - If the banner doesn't appear (`error: button … not found`), confirm it with a screenshot before rating it: it may have different text or be inside an iframe.
 
@@ -362,10 +362,10 @@ The network proves the hit goes out; it remains to check that the property recei
 
 ## Step 6. Errors and real Web Vitals
 
-- **Sentry** (`@sentry/nextjs` 11.x, compatible with Next 16): `instrumentation-client.ts` with `Sentry.init` and `export const onRouterTransitionStart = Sentry.captureRouterTransitionStart`; `instrumentation.ts` with `register()` and `export const onRequestError = Sentry.captureRequestError` (server errors); `app/global-error.tsx` with `captureException`; `next.config.ts` with `withSentryConfig` (source maps with `SENTRY_AUTH_TOKEN` outside the repo; `tunnelRoute` against blockers, excluded from the `proxy.ts` matcher). `tracesSampleRate: 1` in production is expensive: 0.1 is usually enough. Session Replay records sessions: run it through `qa-legal-spain`. Verify with a test button that throws an error on staging and check that it reaches Issues **with a readable stack** (source maps).
+- **Sentry** (`@sentry/nextjs` 11.x, compatible with Next 16): `instrumentation-client.ts` with `Sentry.init` and `export const onRouterTransitionStart = Sentry.captureRouterTransitionStart`; `instrumentation.ts` with `register()` and `export const onRequestError = Sentry.captureRequestError` (server errors); `app/global-error.tsx` with `captureException`; `next.config.ts` with `withSentryConfig` (source maps with `SENTRY_AUTH_TOKEN` outside the repo; `tunnelRoute` against blockers, excluded from the `proxy.ts` matcher). `tracesSampleRate: 1` in production is expensive: 0.1 is usually enough. Session Replay records sessions: run it through `qa-legal`. Verify with a test button that throws an error on staging and check that it reaches Issues **with a readable stack** (source maps).
 - **Real Web Vitals (RUM)**: `useReportWebVitals` (from `next/web-vitals`, in a client component mounted in the layout) receives TTFB, FCP, LCP, CLS and INP; if it only does `console.log`, it measures nothing. Send it to GA4 (`sendGAEvent('event', metric.name, { value, metric_id: metric.id })`) or to your own endpoint with `navigator.sendBeacon`. Alternatives: Vercel Speed Insights (Vercel only) or the Core Web Vitals report in Search Console / CrUX (needs enough traffic). Lab measurements belong to `qa-performance-cwv`.
 
-**Cookieless alternatives** (what they measure; the legal part, in `qa-legal-spain`):
+**Cookieless alternatives** (what they measure; the legal part, in `qa-legal`):
 
 | Tool | What it measures | Requirements and notes |
 |---|---|---|
@@ -421,7 +421,7 @@ Critical: N · High: N · Medium: N · Low: N · Not verified in the tool: <list
 
 ## If the user asks for fixes
 
-Order: 1) hits going out with the real ID (and only in production); 2) consent coordinated with `qa-legal-spain`; 3) page_view on client navigation without duplicates; 4) the plan's events, starting with `generate_lead` on the form's successful response; 5) key events and filters in the tool; 6) Sentry and Web Vitals. After each block, run `analytics-capture.mjs` again and compare `byEvent` with the previous run.
+Order: 1) hits going out with the real ID (and only in production); 2) consent coordinated with `qa-legal`; 3) page_view on client navigation without duplicates; 4) the plan's events, starting with `generate_lead` on the form's successful response; 5) key events and filters in the tool; 6) Sentry and Web Vitals. After each block, run `analytics-capture.mjs` again and compare `byEvent` with the previous run.
 
 ## Sources
 

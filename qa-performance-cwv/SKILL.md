@@ -9,7 +9,7 @@ The goal is to answer two questions with measurements: **does the site pass Core
 
 **By default no code is modified**: the report is delivered and fixes are applied only if the user asks. Tools are installed in `/tmp/qa-performance-cwv/`, never in the project.
 
-Boundaries with other skills: total page weight and CO2 footprint belong to `qa-ecodesign`; layout in other browsers, to `qa-responsive-browsers`; the choice of analytics tools and their consent, to `qa-analytics` and `qa-legal-spain`; metadata and indexing, to `qa-technical-seo`. Here only the **performance cost** of each thing is measured.
+Boundaries with other skills: total page weight and CO2 footprint belong to `qa-ecodesign`; layout in other browsers, to `qa-responsive-browsers`; the choice of analytics tools and their consent, to `qa-analytics` and `qa-legal`; metadata and indexing, to `qa-technical-seo`. Here only the **performance cost** of each thing is measured.
 
 ## Step 0. Context
 
@@ -294,7 +294,7 @@ for (const f of files) {
     for (const m of tags(code, 'Script')) {
       const t = m[0], l = lineOf(code, m.index), strat = (t.match(/strategy=["'](\w+)/) || [, 'afterInteractive'])[1];
       if (strat === 'beforeInteractive') emit('script-before-interactive', 'medium', f, l, t, 'only for critical scripts (consent manager, polyfills)');
-      else if (THIRD.test(t) && strat === 'afterInteractive') emit('script-third-party-early', 'medium', f, l, t, 'lazyOnload or @next/third-parties; consent: see qa-analytics / qa-legal-spain');
+      else if (THIRD.test(t) && strat === 'afterInteractive') emit('script-third-party-early', 'medium', f, l, t, 'lazyOnload or @next/third-parties; consent: see qa-analytics / qa-legal');
     }
     for (const m of tags(code, 'iframe')) {
       const t = m[0], l = lineOf(code, m.index);
